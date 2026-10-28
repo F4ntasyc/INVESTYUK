@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Placeholder sektor pariwisata">
+  <title>Placeholder sektor pariwisata</title>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2545"/><stop offset="1" stop-color="#2563EB"/></linearGradient></defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <g transform="translate(400 222)" fill="none" stroke="#38BDF8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M-4 34C-4 10 0-10 8-26"/><path d="M8-26C-10-34-28-26-34-14M8-26C20-38 36-34 42-24M8-26C10-10 2 2-6 6"/><path d="M-46 34H46"/></g>
+  <text x="400" y="294" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#FFFFFF">Sektor Pariwisata</text>
+  <text x="400" y="331" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-size="16" fill="#BFDBFE">Placeholder · ganti dengan foto asli</text>
+</svg>

@@ -12,7 +12,16 @@
       "agrowisata": "Kebun hortikultura untuk pengembangan agrowisata",
       "resortPantai": "Pantai dan pulau kecil untuk pembangunan resort",
       "kawasanIndustri": "Gedung pabrik di kawasan industri terpadu",
-      "inquiryGedung": "Gedung kantor pemerintah Kabupaten ABC"
+      "inquiryGedung": "Gedung kantor pemerintah Kabupaten ABC",
+      "sektor": {
+        "pertanian": "Ilustrasi lahan dan hasil pertanian",
+        "perikanan": "Ilustrasi kegiatan perikanan",
+        "pariwisata": "Ilustrasi kawasan wisata",
+        "industri": "Ilustrasi bangunan industri",
+        "perdagangan": "Ilustrasi pusat perdagangan",
+        "energi": "Ilustrasi fasilitas energi",
+        "ekonomiKreatif": "Ilustrasi kegiatan ekonomi kreatif"
+      }
     }
   },
   "home": {

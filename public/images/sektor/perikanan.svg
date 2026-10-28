@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Placeholder sektor perikanan">
+  <title>Placeholder sektor perikanan</title>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2545"/><stop offset="1" stop-color="#2563EB"/></linearGradient></defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <g transform="translate(400 222)" fill="none" stroke="#38BDF8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M-40 0C-20-26 20-26 34 0-20 26 20 26-40 0Z"/><path d="M34 0 48-14V14Z"/><circle cx="-18" cy="-4" r="3"/></g>
+  <text x="400" y="294" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#FFFFFF">Sektor Perikanan</text>
+  <text x="400" y="331" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-size="16" fill="#BFDBFE">Placeholder · ganti dengan foto asli</text>
+</svg>

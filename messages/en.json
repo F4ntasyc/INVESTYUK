@@ -12,7 +12,16 @@
       "agrowisata": "Horticulture garden for agritourism development",
       "resortPantai": "Beach and small island for a resort development",
       "kawasanIndustri": "Factory buildings in an integrated industrial estate",
-      "inquiryGedung": "ABC Regency government office building"
+      "inquiryGedung": "ABC Regency government office building",
+      "sektor": {
+        "pertanian": "Illustration of farmland and crops",
+        "perikanan": "Illustration of fisheries activity",
+        "pariwisata": "Illustration of a tourism area",
+        "industri": "Illustration of an industrial building",
+        "perdagangan": "Illustration of a trading centre",
+        "energi": "Illustration of an energy facility",
+        "ekonomiKreatif": "Illustration of creative economy work"
+      }
     }
   },
   "home": {

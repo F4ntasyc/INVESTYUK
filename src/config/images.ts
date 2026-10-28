@@ -61,9 +61,62 @@ export const images = {
     altKey: "images.inquiryGedung",
     placeholder: true,
   },
+  /** Gambar umum per sektor (key = slug sektor). Dipakai seed sebagai foto peluang. */
+  sektor: {
+    pertanian: {
+      src: "/images/sektor/pertanian.svg",
+      width: 800,
+      height: 500,
+      altKey: "images.sektor.pertanian",
+      placeholder: true,
+    },
+    perikanan: {
+      src: "/images/sektor/perikanan.svg",
+      width: 800,
+      height: 500,
+      altKey: "images.sektor.perikanan",
+      placeholder: true,
+    },
+    pariwisata: {
+      src: "/images/sektor/pariwisata.svg",
+      width: 800,
+      height: 500,
+      altKey: "images.sektor.pariwisata",
+      placeholder: true,
+    },
+    industri: {
+      src: "/images/sektor/industri.svg",
+      width: 800,
+      height: 500,
+      altKey: "images.sektor.industri",
+      placeholder: true,
+    },
+    perdagangan: {
+      src: "/images/sektor/perdagangan.svg",
+      width: 800,
+      height: 500,
+      altKey: "images.sektor.perdagangan",
+      placeholder: true,
+    },
+    energi: {
+      src: "/images/sektor/energi.svg",
+      width: 800,
+      height: 500,
+      altKey: "images.sektor.energi",
+      placeholder: true,
+    },
+    "ekonomi-kreatif": {
+      src: "/images/sektor/ekonomi-kreatif.svg",
+      width: 800,
+      height: 500,
+      altKey: "images.sektor.ekonomiKreatif",
+      placeholder: true,
+    },
+  },
 } as const satisfies {
   logo: SiteImage;
   hero: SiteImage;
   peluang: Record<string, SiteImage>;
   inquiryGedung: SiteImage;
+  sektor: Record<string, SiteImage>;
 };
