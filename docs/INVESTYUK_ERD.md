@@ -155,28 +155,36 @@ erDiagram
 
 ## 7. Perintah awal
 
-```bash
-npm install prisma @prisma/client
-npx prisma init --datasource-provider mysql
-# salin schema.prisma dari lampiran, atur DATABASE_URL di .env
-npx prisma migrate dev --name init
-npx prisma generate
-# setelah menulis prisma/seed.ts dan mendaftarkannya di package.json:
-npx prisma db seed
+Setup aktual di repo (Windows PowerShell). Prisma **7.10.1 dikunci** dan **tidak** memakai `prisma init`:
+
+- Paket dipasang dengan versi tepat: `npm install --save-exact prisma@7.10.1 dotenv` (dev) dan `npm install --save-exact @prisma/client@7.10.1 @prisma/adapter-mariadb@7.10.1`. Anggota tim cukup menjalankan `npm install`.
+- Konfigurasi CLI ada di `prisma7.config.ts` (schema `prisma/schema.prisma`, migrasi `prisma/migrations`, URL dari `DATABASE_URL`).
+- `schema.prisma` memakai generator `prisma-client` dengan output `src/generated/prisma` (di-ignore git); `datasource` tidak lagi berisi `url`.
+- Aplikasi terhubung lewat adapter `PrismaMariaDb` yang menerima `DATABASE_URL` langsung (lihat `src/lib/prisma.ts`).
+- MySQL berjalan di Docker Compose dengan port host **3307**.
+
+```powershell
+npm install
+Copy-Item .env.example .env
+docker compose up -d
+npm run db:migrate
+npm run db:generate
 ```
 
-Contoh `DATABASE_URL`: `mysql://root:password@localhost:3306/investyuk`
+`npm install` sudah menjalankan `prisma generate` lewat skrip `postinstall`; `npm run db:generate` hanya diperlukan bila `schema.prisma` berubah. Seed data belum tersedia.
+
+Contoh `DATABASE_URL`: `mysql://root:password@localhost:3307/investyuk`
 
 ## 8. Lampiran: `schema.prisma`
 
 ```prisma
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
 }
 
 // ===================== ENUM =====================

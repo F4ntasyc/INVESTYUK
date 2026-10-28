@@ -2,79 +2,90 @@
 
 **Investment Information & Intelligence**: website informasi peluang investasi daerah Kabupaten ABC dengan pencarian cerdas, rekomendasi, dan pengelompokan peluang.
 
-![Status](https://img.shields.io/badge/status-tahap%20perancangan-orange)
-![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Status](https://img.shields.io/badge/status-fase%200%E2%80%931%3A%20fondasi%20%26%20database-orange)
+![Next.js](https://img.shields.io/badge/Next.js-16.4.3-000000?logo=nextdotjs&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-7.10.1-2D3748?logo=prisma&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 
-<!-- Tambahkan tangkapan layar aplikasi di docs/screenshots/ lalu aktifkan baris di bawah:
-![Beranda INVESTYUK](docs/screenshots/beranda.png)
--->
+> **Proyek akademik.** INVESTYUK adalah tugas besar mata kuliah Manajemen Proyek (S1 Informatika) berdasarkan Kerangka Acuan Kerja (KAK) simulasi. **Kabupaten ABC bersifat fiktif**; seluruh angka investasi, lokasi, dan konten adalah data contoh.
 
-> **Status proyek: tahap perancangan.** Desain, PRD, dan rancangan database sudah selesai (lihat [Dokumentasi](#dokumentasi)). Kode aplikasi dibangun bertahap sesuai [Roadmap](#roadmap). Instruksi pada bagian [Memulai](#memulai) adalah target yang berlaku setelah fase 0 dan 1 selesai; sesuaikan bila struktur akhir berbeda.
+> **Status:** fondasi (Next.js, Prisma, Docker Compose) dan skema database + migrasi awal sudah ada. Halaman aplikasi, seed data, autentikasi, dan fitur AI belum dibuat. Lihat [Roadmap](#roadmap).
 
-> **Catatan:** INVESTYUK adalah proyek akademik (tugas besar mata kuliah Manajemen Proyek, S1 Informatika) berdasarkan Kerangka Acuan Kerja (KAK) simulasi. **Kabupaten ABC bersifat fiktif**, dan seluruh angka investasi, lokasi proyek, serta konten adalah data contoh.
+---
+
+## Daftar isi
+
+- [Tentang](#tentang)
+- [Fitur](#fitur)
+- [Sistem Cerdas](#sistem-cerdas)
+- [Tech stack](#tech-stack)
+- [Arsitektur](#arsitektur)
+- [Prasyarat (Windows)](#prasyarat-windows)
+- [Setup pertama kali](#setup-pertama-kali)
+- [Kerja harian](#kerja-harian)
+- [Variabel lingkungan](#variabel-lingkungan)
+- [Skrip npm](#skrip-npm)
+- [Struktur proyek](#struktur-proyek)
+- [Troubleshooting](#troubleshooting)
+- [Aturan tim](#aturan-tim)
+- [Dokumentasi](#dokumentasi)
+- [Roadmap](#roadmap)
+- [Perlindungan data pribadi](#perlindungan-data-pribadi)
+- [Atribusi](#atribusi)
+- [Lisensi](#lisensi)
+- [Penulis](#penulis)
 
 ---
 
 ## Tentang
 
-Pemerintah daerah membutuhkan media digital yang menyajikan informasi peluang investasi secara terpusat, transparan, dan mudah diakses. INVESTYUK menjawab kebutuhan itu dengan:
+INVESTYUK menyajikan informasi peluang investasi daerah secara terpusat, transparan, dan mudah diakses:
 
-- Informasi sektor unggulan, peluang investasi, lokasi/proyek, prosedur, dan persyaratan dalam satu tempat.
-- Jalur komunikasi antara calon investor dan pemerintah daerah lewat **inquiry** dan **tracking tindak lanjut**, tanpa mewajibkan akun.
-- **Sistem Cerdas** sederhana yang membantu pengguna menemukan peluang yang relevan.
+- Sektor unggulan, peluang investasi, lokasi, prosedur, dan persyaratan dalam satu tempat.
+- **Inquiry** dari calon investor ke pemerintah daerah, lengkap dengan **kode tracking**, tanpa wajib akun.
+- **Sistem Cerdas** sederhana untuk menemukan peluang yang relevan.
 - **Dashboard** bagi dinas dan admin untuk mengelola data dan memantau inquiry.
 
-INVESTYUK bersifat **edukatif dan informatif**. Tidak ada transaksi investasi di dalamnya, dan AI tidak memberi saran atau keputusan investasi.
+INVESTYUK bersifat **edukatif dan informatif**: tidak ada transaksi investasi, dan AI tidak memberi saran atau keputusan investasi.
 
 ## Fitur
 
-**Untuk pengunjung dan investor (tanpa login)**
-- Beranda *search-first* dengan kolom pencarian cerdas, statistik, dan peluang unggulan
-- Sektor unggulan, daftar dan detail peluang, peta lokasi interaktif
-- Filter sektor, kecamatan, kisaran nilai, dan kelompok peluang
-- Bandingkan hingga 3 peluang, serta "Peluang Serupa"
-- Rekomendasi berdasarkan preferensi (sektor, lokasi, kisaran modal)
-- Prosedur dan persyaratan, FAQ, artikel edukasi investasi
-- Inquiry dengan kode tracking dan halaman Lacak Inquiry
-- Dua bahasa: Indonesia dan Inggris
-
-**Untuk investor terdaftar (opsional)**
-- Riwayat inquiry dan peluang tersimpan
-- Masuk dengan email + password atau akun Google
-
-**Untuk dinas dan admin**
-- Dashboard ringkasan (KPI, grafik, kata kunci populer)
-- Kelola peluang, sektor, kecamatan, prosedur, FAQ, dan artikel
-- Kelola inquiry: penugasan, balasan, catatan internal, perubahan status
-- Kelola pengguna dan peran, audit log, serta halaman Pengelolaan AI (khusus admin)
+| Pengguna | Fitur utama |
+|---|---|
+| Pengunjung & investor (tanpa login) | Beranda *search-first*, sektor unggulan, daftar/detail peluang, peta lokasi, filter, bandingkan hingga 3 peluang, rekomendasi, prosedur, FAQ, artikel, inquiry + Lacak Inquiry, dua bahasa (ID/EN) |
+| Investor terdaftar (opsional) | Riwayat inquiry, peluang tersimpan, masuk dengan email + password atau Google |
+| Dinas & admin | Dashboard KPI, kelola peluang/sektor/kecamatan/konten, kelola inquiry (penugasan, balasan, status), pengguna & peran, audit log, Pengelolaan AI (admin) |
 
 ### Sistem Cerdas
 
 | Fitur | Pendekatan |
 |---|---|
-| **Smart search** | Pemahaman kueri bahasa alami (mis. "lahan perikanan di bawah 500 juta" diurai menjadi filter) + semantic search dengan model embedding multibahasa lokal + keyword/fuzzy sebagai fallback |
-| **Rekomendasi** | Rule-based scoring dari preferensi pengguna + content-based filtering untuk "Peluang Serupa"; setiap hasil disertai alasan |
+| **Smart search** | Kueri bahasa alami diurai menjadi filter (mis. "lahan perikanan di bawah 500 juta") + semantic search dengan model embedding multibahasa lokal; keyword/fuzzy sebagai fallback |
+| **Rekomendasi** | Rule-based scoring dari preferensi + content-based filtering untuk "Peluang Serupa"; setiap hasil disertai alasan |
 | **Pengelompokan** | Kategori manual (sektor, kecamatan) + K-Means atas fitur numerik peluang |
 
-Semua keluaran berasal dari data di database dan diberi catatan bahwa informasi bersifat estimasi, bukan nasihat keuangan.
+Semua keluaran berasal dari data di database dan diberi catatan bahwa informasinya estimasi, bukan nasihat keuangan.
 
 ## Tech stack
 
-| Lapisan | Teknologi |
-|---|---|
-| Framework | Next.js (App Router), JavaScript/TypeScript |
-| Database | MySQL 8 |
-| ORM | Prisma |
-| UI | Tailwind CSS, shadcn/ui, lucide-react |
-| Grafik & peta | Recharts, react-leaflet (OpenStreetMap) |
-| Internasionalisasi | next-intl |
-| Autentikasi | Auth.js (email + password, Google) |
-| Pengujian | Vitest, Playwright, Lighthouse, axe |
-| Lingkungan | Docker Compose (app, MySQL, Mailpit) |
+Versi diambil dari `package.json` dan `docker-compose.yml`.
+
+| Lapisan | Teknologi | Versi |
+|---|---|---|
+| Runtime | Node.js | `>=22` (Dockerfile: `node:22-slim`) |
+| Framework | Next.js (App Router), React | `16.4.3`, `19.3.0` |
+| Bahasa | TypeScript | `^5` |
+| Styling | Tailwind CSS | `^4` |
+| Linter | ESLint + `eslint-config-next` | `^9`, `16.4.3` |
+| ORM | Prisma (`prisma`, `@prisma/client`, `@prisma/adapter-mariadb`) | `7.10.1` (dikunci) |
+| Database | MySQL (Docker) | `mysql:8.4` |
+| Email lokal | Mailpit (Docker) | `axllent/mailpit:latest` |
+| Komponen UI | shadcn/ui, lucide-react | (direncanakan) |
+| Internasionalisasi | next-intl | (direncanakan) |
+| Autentikasi | Auth.js (email + password, Google) | (direncanakan) |
+| Grafik & peta | Recharts, react-leaflet (OpenStreetMap) | (direncanakan) |
+| Pengujian | Vitest, Playwright | (direncanakan) |
 
 ## Arsitektur
 
@@ -90,128 +101,377 @@ flowchart LR
     N --> U[("Volume uploads")]
 ```
 
-## Memulai
+## Prasyarat (Windows)
 
-### Prasyarat
+| Alat | Versi | Catatan |
+|---|---|---|
+| Git | terbaru | |
+| Node.js | 22 atau lebih baru | Dockerfile memakai `node:22-slim`; `package.json` mewajibkan `>=22` |
+| Docker Desktop | terbaru | Pakai backend **WSL2** (Settings → General) |
 
-- [Docker](https://docs.docker.com/get-docker/) dan Docker Compose
-- (Opsional, untuk pengembangan tanpa Docker) Node.js 20 atau lebih baru dan MySQL 8
+Instalasi lewat `winget` (PowerShell, lalu **tutup dan buka ulang terminal**):
 
-### Menjalankan dengan Docker Compose
-
-```bash
-# 1. Ambil kode
-git clone <url-repo-anda> investyuk
-cd investyuk
-
-# 2. Siapkan variabel lingkungan
-cp .env.example .env
-# edit .env: terutama AUTH_SECRET (lihat tabel di bawah)
-
-# 3. Jalankan semua layanan
-docker compose up -d --build
-
-# 4. Buat tabel dan isi data contoh
-docker compose exec app npx prisma migrate deploy
-docker compose exec app npx prisma db seed
+```powershell
+winget install --id Git.Git -e
+winget install --id OpenJS.NodeJS.LTS -e
+winget install --id Docker.DockerDesktop -e
 ```
 
-Setelah selesai:
+Cek versi:
 
-| Layanan | Alamat |
-|---|---|
-| Aplikasi | http://localhost:3000 (Inggris: http://localhost:3000/en) |
-| Mailpit (kotak masuk email uji) | http://localhost:8025 |
-| MySQL | `localhost:3306` |
+```powershell
+git --version
+node -v
+npm -v
+docker --version
+docker compose version
+```
 
-> Saat pertama kali dijalankan, model embedding diunduh dan disimpan di volume cache, jadi permintaan pencarian pertama bisa lebih lambat. Bila model belum siap, pencarian otomatis memakai keyword/fuzzy.
+**Hasil yang diharapkan:** semua perintah mencetak versi; `node -v` menunjukkan `v22.x` atau lebih baru.
 
-### Menjalankan tanpa Docker (pengembangan)
+## Setup pertama kali
 
-```bash
+Jalankan semua perintah di PowerShell dari folder proyek.
+
+### 1. Clone repo
+
+```powershell
+git clone https://github.com/F4ntasyc/INVESTYUK.git
+cd INVESTYUK
+```
+
+**Hasil yang diharapkan:** folder `INVESTYUK` berisi `package.json`, `docker-compose.yml`, `prisma/`, dan `src/`.
+
+### 2. Pasang dependensi
+
+```powershell
 npm install
-cp .env.example .env          # arahkan DATABASE_URL ke MySQL lokal
-npx prisma migrate dev
-npx prisma db seed
+```
+
+Skrip `postinstall` otomatis menjalankan `prisma generate`, sehingga Prisma Client dibuat di `src/generated/prisma` (folder ini tidak di-commit).
+
+**Hasil yang diharapkan:** di akhir output ada `✔ Generated Prisma Client (7.10.1) to .\src\generated\prisma`.
+
+### 3. Buat file `.env`
+
+```powershell
+Copy-Item .env.example .env
+```
+
+**Hasil yang diharapkan:** file `.env` muncul di root proyek.
+
+### 4. Isi `.env`
+
+Buka `.env` di VS Code, lalu isi:
+
+| Variabel | Isi |
+|---|---|
+| `MYSQL_ROOT_PASSWORD` | Password root MySQL pilihanmu, mis. `investyuk123` |
+| `MYSQL_DATABASE` | Biarkan `investyuk` |
+| `DATABASE_URL` | `mysql://root:investyuk123@localhost:3307/investyuk` (password sama dengan di atas) |
+| `AUTH_SECRET` | String acak (cara membuat di bawah) |
+| `AUTH_URL`, `SMTP_HOST`, `SMTP_PORT`, `MAIL_FROM` | Biarkan nilai dari `.env.example` |
+
+> [!IMPORTANT]
+> - Password MySQL **tanpa karakter khusus** (`@ # : / % ? & +` dan spasi). Pakai huruf dan angka saja.
+> - Password di `MYSQL_ROOT_PASSWORD` dan di dalam `DATABASE_URL` harus **sama persis**.
+> - Port di `DATABASE_URL` adalah **3307** (bukan 3306).
+> - Edit `.env` dengan **VS Code**. Jangan menulis `.env` lewat PowerShell `Set-Content`/`Out-File`, karena bisa menambah BOM dan membuat variabel pertama tidak terbaca.
+> - **Jangan ubah `MYSQL_ROOT_PASSWORD`** setelah `docker compose up` pertama. Password tersimpan di volume database; lihat [Troubleshooting](#troubleshooting) (P1000 karena password berubah).
+
+Membuat `AUTH_SECRET`:
+
+```powershell
+node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+```
+
+Salin hasilnya ke `AUTH_SECRET=` di `.env`.
+
+**Hasil yang diharapkan:** semua variabel di `.env` terisi, tidak ada yang kosong.
+
+### 5. Nyalakan database dan Mailpit
+
+Pastikan Docker Desktop sudah berjalan, lalu:
+
+```powershell
+docker compose up -d
+docker compose ps
+```
+
+Ulangi `docker compose ps` sampai kolom STATUS untuk `investyuk-db` menunjukkan `(healthy)`. Pertama kali biasanya 20–60 detik (image diunduh dan MySQL diinisialisasi).
+
+**Hasil yang diharapkan:** `investyuk-db` berstatus `Up ... (healthy)` dan `investyuk-mailpit` berstatus `Up`.
+
+### 6. Terapkan migrasi database
+
+```powershell
+npm run db:migrate
+```
+
+Perintah ini menerapkan migrasi yang sudah ada di `prisma/migrations` (20 tabel).
+
+> [!WARNING]
+> Kalau Prisma bertanya apakah database boleh di-**reset** (semua data hilang), jawab **TIDAK** (`N`), lalu baca [Troubleshooting](#troubleshooting).
+
+**Hasil yang diharapkan:** pesan bahwa migrasi `20261028115043_init` diterapkan, atau `Already in sync` bila sudah pernah dijalankan.
+
+### 7. Jalankan aplikasi
+
+```powershell
 npm run dev
 ```
 
-### Akun uji
+**Hasil yang diharapkan:** terminal menampilkan `Local: http://localhost:3000`. Hentikan dengan `Ctrl+C`.
 
-Setelah seed, tersedia akun contoh untuk admin, dinas, dan investor. Daftar email dan kata sandi ujinya ada di `.env.example` / `prisma/seed-data/` (hanya untuk lingkungan pengembangan; **jangan dipakai di produksi**).
+### 8. Alamat layanan
+
+| Layanan | Alamat |
+|---|---|
+| Aplikasi | http://localhost:3000 |
+| Mailpit (kotak masuk email uji) | http://localhost:8025 |
+| MySQL (dari Windows) | `localhost:3307`, user `root` |
+
+> [!NOTE]
+> Profile Docker `app` **belum bisa dipakai** karena Dockerfile belum menjalankan `prisma generate`. Jangan jalankan `docker compose --profile app up`. Aplikasi dijalankan dengan `npm run dev` di Windows; Docker hanya untuk database dan Mailpit.
+
+## Kerja harian
+
+| Kebutuhan | Perintah |
+|---|---|
+| Menyalakan database + Mailpit | `docker compose up -d` |
+| Menjalankan aplikasi | `npm run dev` |
+| Mematikan container (data aman) | `docker compose stop` |
+| Setelah `git pull` | `npm install`, lalu `npm run db:migrate` |
+| Melihat isi database | `npm run db:studio` |
+| Melihat log MySQL | `docker compose logs -f db` (keluar: `Ctrl+C`) |
+
+Setelah `git pull`:
+
+```powershell
+npm install
+npm run db:migrate
+```
+
+Perbedaan cara mematikan:
+
+| Perintah | Container | Data database |
+|---|---|---|
+| `docker compose stop` | Dihentikan, tetap ada | **Aman** |
+| `docker compose down` | Dihapus | **Aman** (volume `db_data` tetap) |
+| `docker compose down -v` | Dihapus | **TERHAPUS SEMUA** (volume ikut dihapus) |
 
 ## Variabel lingkungan
 
-Salin `.env.example` menjadi `.env`, lalu isi:
+Variabel yang ada di `.env.example` saat ini:
 
-| Variabel | Keterangan | Contoh |
+| Variabel | Fungsi | Contoh nilai |
 |---|---|---|
-| `DATABASE_URL` | Koneksi MySQL | `mysql://root:password@db:3306/investyuk` |
-| `AUTH_SECRET` | Rahasia sesi Auth.js (acak, minimal 32 karakter) | hasil `openssl rand -base64 32` |
-| `AUTH_URL` | URL dasar aplikasi | `http://localhost:3000` |
-| `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` | Kredensial OAuth Google (opsional; tanpa ini tombol Google dinonaktifkan) | dari Google Cloud Console |
-| `SMTP_HOST` / `SMTP_PORT` | Server email (lokal: Mailpit) | `mailpit` / `1025` |
-| `MAIL_FROM` | Alamat pengirim | `INVESTYUK <no-reply@investyuk.local>` |
-| `CAPTCHA_SITE_KEY` / `CAPTCHA_SECRET_KEY` | Kunci CAPTCHA untuk form inquiry (penyedia belum ditentukan; opsional di lokal) | |
-| `EMBEDDING_MODEL` | Model embedding lokal untuk semantic search | diisi sesuai model yang dipilih |
-| `UPLOAD_DIR` | Folder penyimpanan unggahan gambar | `/app/uploads` |
+| `MYSQL_ROOT_PASSWORD` | Password root MySQL di container `db` (dibaca `docker-compose.yml`) | `investyuk123` |
+| `MYSQL_DATABASE` | Nama database yang dibuat container `db` | `investyuk` |
+| `DATABASE_URL` | Koneksi Prisma dari Windows ke MySQL (dipakai `prisma7.config.ts` dan `src/lib/prisma.ts`) | `mysql://root:investyuk123@localhost:3307/investyuk` |
+| `AUTH_SECRET` | Rahasia sesi untuk Auth.js (belum dipakai kode) | hasil perintah `node -e ...` di langkah 4 |
+| `AUTH_URL` | URL dasar aplikasi (belum dipakai kode) | `http://localhost:3000` |
+| `SMTP_HOST` | Host SMTP; lokal memakai Mailpit (belum dipakai kode) | `localhost` |
+| `SMTP_PORT` | Port SMTP Mailpit (belum dipakai kode) | `1025` |
+| `MAIL_FROM` | Alamat pengirim email (belum dipakai kode) | `INVESTYUK <no-reply@investyuk.local>` |
 
-> Nama variabel Auth.js mengikuti versi yang dipakai; sesuaikan bila berbeda.
-> File `.env` **tidak boleh** di-commit. Pastikan sudah ada di `.gitignore`.
+Variabel yang **direncanakan** (belum ada di `.env.example`, jangan ditambahkan dulu):
 
-## Struktur proyek
+| Variabel | Fungsi |
+|---|---|
+| `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` | Login dengan Google (opsional) |
+| `CAPTCHA_SITE_KEY` / `CAPTCHA_SECRET_KEY` | CAPTCHA pada form inquiry |
+| `EMBEDDING_MODEL` | Model embedding lokal untuk semantic search |
+| `UPLOAD_DIR` | Folder unggahan gambar |
 
-```text
-investyuk/
-├─ docker-compose.yml
-├─ Dockerfile
-├─ .env.example
-├─ prisma/
-│  ├─ schema.prisma
-│  ├─ seed.ts
-│  └─ seed-data/               # sektor, kecamatan, peluang, FAQ, artikel (ID/EN)
-├─ messages/                   # terjemahan: id.json, en.json
-├─ src/
-│  ├─ app/
-│  │  ├─ [locale]/
-│  │  │  ├─ (public)/          # beranda, peluang, sektor, rekomendasi, ...
-│  │  │  ├─ (auth)/            # masuk, daftar, lupa-password
-│  │  │  ├─ akun/              # riwayat inquiry & peluang tersimpan
-│  │  │  └─ dashboard/         # dinas & admin
-│  │  └─ api/                  # search, recommend, inquiries, track
-│  ├─ components/
-│  └─ lib/
-│     ├─ ai/                   # parser, fuzzy, embedding, hybrid, recommend, kmeans
-│     └─ db.ts auth.ts mail.ts audit.ts tracking-code.ts rate-limit.ts
-├─ tests/
-│  ├─ unit/                    # Vitest
-│  ├─ e2e/                     # Playwright
-│  └─ ai-eval/                 # kueri uji dan skrip evaluasi (precision@5)
-└─ docs/                       # PRD, ERD, tangkapan layar
-```
+> File `.env` **tidak boleh** di-commit (sudah di `.gitignore`). Yang di-commit hanya `.env.example`.
 
-## Skrip
+## Skrip npm
 
-Skrip npm yang direncanakan (nama final mengikuti `package.json`):
+Skrip yang ada di `package.json`:
 
 | Perintah | Fungsi |
 |---|---|
-| `npm run dev` | Server pengembangan |
-| `npm run build` / `npm start` | Build dan jalankan produksi |
-| `npm run lint` | Linter |
+| `npm run dev` | Server pengembangan Next.js |
+| `npm run build` | Build produksi |
+| `npm run start` | Menjalankan hasil build |
+| `npm run lint` | ESLint |
+| `npm run db:generate` | `prisma generate`: membuat ulang Prisma Client (setelah `schema.prisma` berubah) |
+| `npm run db:migrate` | `prisma migrate dev`: menerapkan migrasi / membuat migrasi baru |
+| `npm run db:studio` | `prisma studio`: melihat dan mengedit isi database di browser |
+| `postinstall` | Otomatis setelah `npm install`: `prisma generate` |
+
+Skrip yang **direncanakan** (belum ada):
+
+| Perintah | Fungsi |
+|---|---|
 | `npm test` | Unit dan integrasi (Vitest) |
-| `npm run test:e2e` | Uji end-to-end (Playwright) |
+| `npm run test:e2e` | End-to-end (Playwright) |
 | `npm run test:ai` | Evaluasi Sistem Cerdas dengan kueri uji |
 | `npx prisma db seed` | Mengisi data contoh |
-| `npx prisma studio` | Melihat isi database |
 
-## Pengujian
+## Struktur proyek
 
-- **Unit dan integrasi (Vitest):** parser kueri, fuzzy, skor rekomendasi, K-Means, kode tracking, aturan akses, alur inquiry.
-- **End-to-end (Playwright):** cari → detail → inquiry → lacak; login dinas → balas inquiry; pergantian bahasa.
-- **Evaluasi AI:** minimal 30 kueri uji; membandingkan precision@5 antara keyword/fuzzy saja dan hybrid.
-- **Kualitas tampilan:** Lighthouse dan axe dengan target WCAG 2.1 AA dan skor Lighthouse ≥ 90.
-- **Manual:** keamanan (OWASP Top 10), kompatibilitas browser/perangkat, dan UAT.
+Kondisi saat ini:
+
+```text
+INVESTYUK/
+├─ docs/
+│  ├─ INVESTYUK_PRD.md
+│  └─ INVESTYUK_ERD.md
+├─ prisma/
+│  ├─ schema.prisma            # 20 model, 5 enum
+│  └─ migrations/
+│     ├─ 20261028115043_init/  # migrasi awal
+│     └─ migration_lock.toml
+├─ public/                     # aset statis bawaan Next.js
+├─ src/
+│  ├─ app/                     # layout.tsx, page.tsx, globals.css, favicon.ico
+│  ├─ generated/prisma/        # Prisma Client (dibuat otomatis, tidak di-commit)
+│  └─ lib/
+│     └─ prisma.ts             # PrismaClient singleton + adapter MariaDB
+├─ .dockerignore
+├─ .env.example
+├─ AGENTS.md                   # dibuat otomatis oleh `next dev`
+├─ docker-compose.yml          # db (MySQL 8.4), mailpit, app (profile, belum siap)
+├─ Dockerfile
+├─ eslint.config.mjs
+├─ next.config.ts
+├─ package.json
+├─ prisma7.config.ts           # konfigurasi Prisma CLI
+└─ tsconfig.json
+```
+
+Direncanakan:
+
+| Lokasi | Isi |
+|---|---|
+| `prisma/seed.ts`, `prisma/seed-data/` | Seed data (sektor, kecamatan, peluang, FAQ, artikel; ID/EN) (direncanakan) |
+| `messages/` | Terjemahan `id.json`, `en.json` (direncanakan) |
+| `src/app/[locale]/` | Halaman publik, auth, akun, dashboard (direncanakan) |
+| `src/app/api/` | search, recommend, inquiries, track (direncanakan) |
+| `src/components/` | Komponen UI (direncanakan) |
+| `src/lib/ai/` | parser, fuzzy, embedding, hybrid, recommend, kmeans (direncanakan) |
+| `tests/unit/`, `tests/e2e/`, `tests/ai-eval/` | Vitest, Playwright, evaluasi AI (direncanakan) |
+| `docs/screenshots/` | Tangkapan layar (direncanakan) |
+
+## Troubleshooting
+
+### P1000 Authentication failed: port dipakai MySQL lain
+
+**Gejala:** `npm run db:migrate` gagal dengan `P1000: Authentication failed`.
+
+**Penyebab:** MySQL lain di Windows (XAMPP, Laragon, atau service MySQL) memakai port 3306/3307, sehingga Prisma terhubung ke MySQL yang salah.
+
+**Solusi:**
+
+```powershell
+netstat -ano | findstr :3307
+```
+
+Ambil angka PID di kolom terakhir, lalu:
+
+```powershell
+tasklist /FI "PID eq <PID>"
+```
+
+- Pastikan `DATABASE_URL` memakai port `3307`.
+- Kalau prosesnya bukan Docker (`com.docker.backend.exe` / `wslrelay.exe`), hentikan MySQL lain itu, **atau** ganti port host di `docker-compose.yml` (mis. `"3308:3306"`) dan di `DATABASE_URL`, lalu jalankan `docker compose up -d` lagi.
+
+### P1000 Authentication failed: password berubah
+
+**Gejala:** `P1000: Authentication failed`, padahal port sudah benar.
+
+**Penyebab:** `MYSQL_ROOT_PASSWORD` diubah setelah volume `db_data` terbentuk. MySQL hanya memakai password saat inisialisasi pertama; volume masih menyimpan password lama.
+
+**Cek:**
+
+```powershell
+docker compose exec db mysql -uroot -p -e "SELECT 'login OK';"
+```
+
+Masukkan password dari `.env`. Kalau hasilnya `Access denied`, penyebabnya ini.
+
+**Solusi:**
+
+> [!CAUTION]
+> **`docker compose down -v` MENGHAPUS SEMUA DATA DATABASE.** Lakukan hanya bila datanya boleh hilang.
+
+```powershell
+docker compose down -v
+docker compose up -d
+```
+
+Tunggu sampai `(healthy)` (`docker compose ps`), lalu terapkan migrasi lagi:
+
+```powershell
+npm run db:migrate
+```
+
+### ERROR 2002 Can't connect through socket
+
+**Gejala:** `ERROR 2002 (HY000): Can't connect to local MySQL server through socket` saat `docker compose exec db mysql ...`.
+
+**Penyebab:** MySQL masih inisialisasi.
+
+**Solusi:** tunggu sampai `docker compose ps` menunjukkan `(healthy)`, lalu ulangi.
+
+### Cannot find module '@/generated/prisma/client'
+
+**Gejala:** error import saat `npm run dev` atau di editor.
+
+**Penyebab:** Prisma Client belum dibuat (mis. `npm install` dilewati atau `schema.prisma` berubah).
+
+**Solusi:**
+
+```powershell
+npm run db:generate
+```
+
+### Port 3000 sudah dipakai
+
+**Gejala:** `npm run dev` melaporkan port 3000 sedang dipakai.
+
+**Solusi:** cari prosesnya:
+
+```powershell
+netstat -ano | findstr :3000
+```
+
+Hentikan proses itu, atau jalankan di port lain:
+
+```powershell
+npx next dev -p 3001
+```
+
+> Di PowerShell, `npm run dev -- -p 3001` kadang tidak meneruskan `--` ke npm; `npx next dev -p 3001` lebih aman.
+
+### Warning "LF will be replaced by CRLF"
+
+**Gejala:** muncul saat `git add`.
+
+**Solusi:** aman, abaikan.
+
+### Banner Prisma "Update available 7.10.1 -> 8.x"
+
+**Gejala:** banner muncul saat menjalankan perintah Prisma.
+
+**Solusi:** **jangan upgrade.** Versi Prisma dikunci di `7.10.1` untuk proyek ini.
+
+### Docker Desktop belum jalan
+
+**Gejala:** `error during connect` atau pesan tentang `pipe/docker_engine` saat menjalankan `docker`.
+
+**Solusi:** buka Docker Desktop dan tunggu statusnya **Running**, lalu ulangi perintah.
+
+## Aturan tim
+
+1. Buat branch dari `main`: `feat/...` untuk fitur, `fix/...` untuk perbaikan (mis. `feat/smart-search`).
+2. Pesan commit mengikuti [Conventional Commits](https://www.conventionalcommits.org/), mis. `feat: tambah filter kelompok peluang`.
+3. Jangan commit `.env`, password, atau kunci API.
+4. Jangan upgrade Prisma atau Next.js tanpa diskusi tim.
+5. Jangan ubah `MYSQL_ROOT_PASSWORD` sembarangan (lihat [Troubleshooting](#troubleshooting)).
+6. `AGENTS.md` dibuat ulang otomatis oleh `next dev`. Biarkan isinya, dan commit bila berubah.
 
 ## Dokumentasi
 
@@ -222,8 +482,20 @@ Skrip npm yang direncanakan (nama final mengikuti `package.json`):
 
 ## Roadmap
 
-- [ ] **Fase 0, Fondasi:** repo, Next.js, Tailwind + shadcn/ui, Prisma, Docker Compose, next-intl, token desain
-- [ ] **Fase 1, Data:** skema, migrasi, seed (±40 peluang, dua bahasa)
+**Fase 0, Fondasi**
+- [x] Repo
+- [x] Next.js + Tailwind CSS
+- [x] Prisma
+- [x] Docker Compose (MySQL + Mailpit)
+- [ ] shadcn/ui
+- [ ] next-intl
+- [ ] Token desain
+
+**Fase 1, Data**
+- [x] Skema database + migrasi awal (20 tabel)
+- [ ] Seed (±40 peluang, dua bahasa)
+
+**Fase berikutnya**
 - [ ] **Fase 2, Halaman publik inti:** beranda, sektor, daftar dan detail peluang, prosedur, FAQ, edukasi
 - [ ] **Fase 3, Pencarian & AI dasar:** parser kueri, fuzzy, rekomendasi rule-based, K-Means
 - [ ] **Fase 4, Inquiry & autentikasi:** form, tracking, email, peran
@@ -231,24 +503,15 @@ Skrip npm yang direncanakan (nama final mengikuti `package.json`):
 - [ ] **Fase 6, Peningkatan:** semantic + hybrid search, peta, bandingkan, Peluang Serupa, Pengelolaan AI, audit log, hak hapus
 - [ ] **Fase 7, Mutu & dokumentasi:** pengujian, evaluasi AI, perbaikan, manual pengguna dan developer
 
-**Pengembangan lanjutan (di luar versi ini):** asisten tanya-jawab (RAG), hosting publik, notifikasi WhatsApp/SMS, dark mode.
+**Di luar versi ini:** asisten tanya-jawab (RAG), hosting publik, notifikasi WhatsApp/SMS, dark mode.
 
 ## Perlindungan data pribadi
 
 - Data yang diminta seminimal mungkin (nama, email, pesan; sisanya opsional) dengan persetujuan tercatat.
-- Kontak investor di-*mask* pada daftar, dan pembukaannya dicatat di audit log.
+- Kontak investor di-*mask* pada daftar; pembukaannya dicatat di audit log.
 - Akses data dibatasi per peran; dinas hanya melihat inquiry sektornya.
-- Investor dapat meminta data mereka dihapus/dianonimkan.
+- Investor dapat meminta datanya dihapus/dianonimkan.
 - Log pencarian bersifat anonim.
-
-## Kontribusi
-
-Proyek ini dikerjakan sebagai tugas akademik. Bila bekerja dalam tim:
-
-1. Buat cabang dari `main` dengan nama deskriptif, mis. `feat/smart-search`, `fix/inquiry-tracking`.
-2. Gunakan pesan commit yang jelas (disarankan format [Conventional Commits](https://www.conventionalcommits.org/), mis. `feat: tambah filter kelompok peluang`).
-3. Pastikan `npm run lint` dan `npm test` lulus sebelum membuka Pull Request.
-4. Jangan commit `.env`, kata sandi, atau kunci API.
 
 ## Atribusi
 
