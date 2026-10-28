@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "title": "INVESTYUK · Investment Opportunities in ABC Regency",
+    "description": "The investment information hub of ABC Regency, with smart search, recommendations and opportunity clustering."
+  },
+  "common": {
+    "officialSite": "Official site",
+    "switchLanguage": "Bahasa Indonesia",
+    "images": {
+      "logo": "INVESTYUK logo",
+      "hero": "Coastline and hills of ABC Regency",
+      "agrowisata": "Horticulture garden for agritourism development",
+      "resortPantai": "Beach and small island for a resort development",
+      "kawasanIndustri": "Factory buildings in an integrated industrial estate",
+      "inquiryGedung": "ABC Regency government office building"
+    }
+  },
+  "home": {
+    "title": "Discover Investment Opportunities in ABC Regency",
+    "intro": "A regional investment information hub, powered by AI to help you find the best opportunities.",
+    "accent": "Building Together",
+    "primaryAction": "Find opportunities",
+    "secondaryAction": "Send an inquiry",
+    "card": {
+      "title": "Priority Sectors",
+      "body": "Explore the potential of each priority sector in ABC Regency."
+    }
+  }
+}

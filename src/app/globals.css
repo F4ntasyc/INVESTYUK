@@ -1,26 +1,169 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+/*
+ * Varian `dark:` hanya aktif bila ada class .dark (tidak pernah dipasang).
+ * Dark mode di luar scope; tanpa baris ini komponen shadcn ikut gelap
+ * mengikuti pengaturan OS.
+ */
+@custom-variant dark (&:is(.dark *));
+
+/* =====================================================================
+ * TOKEN DESAIN INVESTYUK  (sumber: PRD §8.1 + mockup docs/UI/beranda.png)
+ * Satu sumber kebenaran. Komponen memakai utilitas Tailwind dari @theme
+ * di bawah (mis. bg-navy, text-text-2, shadow-card, font-heading).
+ * ===================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Palet merek ------------------------------------------------- */
+  --navy: #0b2545; /* heading, tombol gelap, footer */
+  --blue: #2563eb; /* aksi utama: tombol Cari, tautan aktif, focus ring */
+  --sky: #38bdf8; /* aksen; HANYA di atas latar gelap/foto (7.2:1 di navy) */
+  --gold: #d4a017; /* badge "Situs resmi" saja; teks di atasnya navy */
+
+  /* --- Netral ------------------------------------------------------ */
+  --surface: #ffffff; /* latar halaman & kartu */
+  --section: #f6f8fb; /* latar section selang-seling (biru sangat muda) */
+  --tint-blue-soft: #eff6ff; /* hover/aktif ringan (menu, chip) */
+  --line: #e2e8f0; /* garis dekoratif / batas kartu */
+  --line-strong: #8291a7; /* batas input (3.2:1, WCAG 1.4.11) */
+  --text: #0f172a; /* teks utama */
+  --text-2: #475569; /* teks sekunder; JANGAN lebih terang dari ini */
+
+  /* --- Ikon kategori: latar pastel + ikon warna tua (kontras >= 4.5:1) */
+  --tint-green: #dcfce7;
+  --icon-green: #15803d;
+  --tint-purple: #ede9fe;
+  --icon-purple: #6d28d9;
+  --tint-blue: #dbeafe;
+  --icon-blue: #1d4ed8;
+  --tint-orange: #ffedd5;
+  --icon-orange: #c2410c;
+  --tint-pink: #fce7f3;
+  --icon-pink: #be185d;
+  --tint-teal: #ccfbf1;
+  --icon-teal: #0f766e;
+
+  /* --- Bentuk & elevasi ------------------------------------------- */
+  --radius: 0.75rem; /* basis shadcn; rounded-xl = 16px (kartu) */
+  --radius-card: 1rem; /* 16px */
+  --radius-pill: 999px; /* tombol, input/search, chip */
+  --touch-target: 2.75rem; /* 44px, tinggi minimum elemen interaktif */
+  --shadow-card:
+    0 1px 2px rgb(11 37 69 / 0.04), 0 4px 12px rgb(11 37 69 / 0.05),
+    0 12px 32px rgb(11 37 69 / 0.06);
+  --shadow-card-hover:
+    0 2px 4px rgb(11 37 69 / 0.06), 0 8px 20px rgb(11 37 69 / 0.08),
+    0 20px 48px rgb(11 37 69 / 0.1);
+
+  /* --- Pemetaan variabel shadcn/ui ke palet di atas ---------------- */
+  --background: var(--surface);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--blue); /* Button default */
+  --primary-foreground: #ffffff; /* 5.2:1 di blue */
+  --secondary: var(--navy); /* Button secondary = tombol gelap */
+  --secondary-foreground: #ffffff; /* 15.4:1 di navy */
+  --muted: var(--section);
+  --muted-foreground: var(--text-2);
+  --accent: var(--tint-blue-soft); /* hover item menu/outline */
+  --accent-foreground: var(--navy);
+  --destructive: #dc2626;
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--blue);
 }
 
 @theme inline {
+  /* warna merek -> bg-navy, text-sky, bg-gold, ... */
+  --color-navy: var(--navy);
+  --color-blue: var(--blue);
+  --color-sky: var(--sky);
+  --color-gold: var(--gold);
+  --color-section: var(--section);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+
+  --color-tint-green: var(--tint-green);
+  --color-icon-green: var(--icon-green);
+  --color-tint-purple: var(--tint-purple);
+  --color-icon-purple: var(--icon-purple);
+  --color-tint-blue: var(--tint-blue);
+  --color-icon-blue: var(--icon-blue);
+  --color-tint-orange: var(--tint-orange);
+  --color-icon-orange: var(--icon-orange);
+  --color-tint-pink: var(--tint-pink);
+  --color-icon-pink: var(--icon-pink);
+  --color-tint-teal: var(--tint-teal);
+  --color-icon-teal: var(--icon-teal);
+
+  /* warna semantik shadcn */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* radius -> rounded-sm/md/lg/xl, rounded-card, rounded-pill */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-card: var(--radius-card);
+  --radius-pill: var(--radius-pill);
+
+  /* elevasi -> shadow-card, shadow-card-hover */
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+
+  /* tinggi minimum sentuh -> min-h-touch, size-touch */
+  --spacing-touch: var(--touch-target);
+
+  /* font (variabel diisi next/font di src/app/[locale]/layout.tsx)
+   * font-sans    -> Inter, body
+   * font-heading -> Plus Jakarta Sans, judul
+   * font-accent  -> Caveat 600, hanya teks "Bersama Membangun"
+   * Angka statistik/tabel: utilitas bawaan `tabular-nums`. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading:
+    var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui,
+    sans-serif;
+  --font-accent: var(--font-caveat), cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading text-navy;
+  }
+  /* Focus ring jelas untuk tautan & elemen tanpa gaya fokus sendiri */
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
 }

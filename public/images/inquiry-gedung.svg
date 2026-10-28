@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-label="Placeholder gedung inquiry">
+  <title>Placeholder gedung inquiry</title>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2545"/><stop offset="1" stop-color="#2563EB"/></linearGradient></defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <g transform="translate(300 172)" fill="none" stroke="#38BDF8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="-30" y="-34" width="60" height="64"/><path d="M-18-20h8M10-20h8M-18-4h8M10-4h8M-18 12h8M10 12h8M-6 30V18h12v12"/></g>
+  <text x="300" y="244" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">Gedung Pemerintah</text>
+  <text x="300" y="275" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-size="12" fill="#BFDBFE">Placeholder · ganti dengan foto asli</text>
+</svg>

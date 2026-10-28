@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Placeholder peluang agrowisata">
+  <title>Placeholder peluang agrowisata</title>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2545"/><stop offset="1" stop-color="#2563EB"/></linearGradient></defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <g transform="translate(400 222)" fill="none" stroke="#38BDF8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M-30 30C-30-10 0-34 34-34 34 0 10 30-30 30Z"/><path d="M-30 30 14-12"/></g>
+  <text x="400" y="294" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#FFFFFF">Agrowisata Hortikultura</text>
+  <text x="400" y="331" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-size="16" fill="#BFDBFE">Placeholder · ganti dengan foto asli</text>
+</svg>

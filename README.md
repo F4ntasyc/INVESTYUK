@@ -81,8 +81,9 @@ Versi diambil dari `package.json` dan `docker-compose.yml`.
 | ORM | Prisma (`prisma`, `@prisma/client`, `@prisma/adapter-mariadb`) | `7.10.1` (dikunci) |
 | Database | MySQL (Docker) | `mysql:8.4` |
 | Email lokal | Mailpit (Docker) | `axllent/mailpit:latest` |
-| Komponen UI | shadcn/ui, lucide-react | (direncanakan) |
-| Internasionalisasi | next-intl | (direncanakan) |
+| Komponen UI | shadcn/ui (style `new-york`, komponen disalin ke `src/components/ui`) | dependensi: `radix-ui` `1.8.1`, `cn` `0.5.0`, `class-variance-authority` `0.7.1`, `tw-animate-css` `1.4.0` |
+| Ikon | lucide-react | `1.63.0` |
+| Internasionalisasi | next-intl (ID default tanpa prefix, EN di `/en`) | `4.14.9` |
 | Autentikasi | Auth.js (email + password, Google) | (direncanakan) |
 | Grafik & peta | Recharts, react-leaflet (OpenStreetMap) | (direncanakan) |
 | Pengujian | Vitest, Playwright | (direncanakan) |
@@ -318,21 +319,39 @@ Kondisi saat ini:
 INVESTYUK/
 ├─ docs/
 │  ├─ INVESTYUK_PRD.md
-│  └─ INVESTYUK_ERD.md
+│  ├─ INVESTYUK_ERD.md
+│  └─ UI/beranda.png           # mockup Beranda
+├─ messages/
+│  ├─ id.json                  # terjemahan ID (namespace: common, metadata, home)
+│  └─ en.json                  # terjemahan EN
 ├─ prisma/
 │  ├─ schema.prisma            # 20 model, 5 enum
 │  └─ migrations/
 │     ├─ 20261028115043_init/  # migrasi awal
 │     └─ migration_lock.toml
-├─ public/                     # aset statis bawaan Next.js
+├─ public/
+│  └─ images/                  # logo, hero, peluang/, inquiry-gedung (placeholder SVG)
 ├─ src/
-│  ├─ app/                     # layout.tsx, page.tsx, globals.css, favicon.ico
+│  ├─ app/
+│  │  ├─ [locale]/             # layout.tsx (font, <html lang>), page.tsx (halaman uji fondasi)
+│  │  ├─ globals.css           # token desain (Tailwind 4 @theme + variabel shadcn)
+│  │  └─ favicon.ico
+│  ├─ components/ui/           # komponen shadcn/ui (button, card, input, badge, select, ...)
+│  ├─ config/
+│  │  └─ images.ts             # daftar semua path gambar + key alt text
 │  ├─ generated/prisma/        # Prisma Client (dibuat otomatis, tidak di-commit)
-│  └─ lib/
-│     └─ prisma.ts             # PrismaClient singleton + adapter MariaDB
+│  ├─ i18n/
+│  │  ├─ routing.ts            # locale id/en, localePrefix 'as-needed'
+│  │  ├─ request.ts            # memuat messages per locale
+│  │  └─ navigation.ts         # Link, redirect, usePathname, useRouter sadar bahasa
+│  ├─ lib/
+│  │  └─ prisma.ts             # PrismaClient singleton + adapter MariaDB
+│  ├─ global.d.ts              # tipe key terjemahan next-intl
+│  └─ proxy.ts                 # routing bahasa (Next.js 16: pengganti middleware.ts)
 ├─ .dockerignore
 ├─ .env.example
 ├─ AGENTS.md                   # dibuat otomatis oleh `next dev`
+├─ components.json             # konfigurasi shadcn/ui
 ├─ docker-compose.yml          # db (MySQL 8.4), mailpit, app (profile, belum siap)
 ├─ Dockerfile
 ├─ eslint.config.mjs
@@ -347,10 +366,9 @@ Direncanakan:
 | Lokasi | Isi |
 |---|---|
 | `prisma/seed.ts`, `prisma/seed-data/` | Seed data (sektor, kecamatan, peluang, FAQ, artikel; ID/EN) (direncanakan) |
-| `messages/` | Terjemahan `id.json`, `en.json` (direncanakan) |
-| `src/app/[locale]/` | Halaman publik, auth, akun, dashboard (direncanakan) |
+| `src/app/[locale]/` | Beranda dan halaman publik, auth, akun, dashboard (direncanakan) |
 | `src/app/api/` | search, recommend, inquiries, track (direncanakan) |
-| `src/components/` | Komponen UI (direncanakan) |
+| `src/components/` | Komponen situs: navbar, footer, kartu peluang (direncanakan) |
 | `src/lib/ai/` | parser, fuzzy, embedding, hybrid, recommend, kmeans (direncanakan) |
 | `tests/unit/`, `tests/e2e/`, `tests/ai-eval/` | Vitest, Playwright, evaluasi AI (direncanakan) |
 | `docs/screenshots/` | Tangkapan layar (direncanakan) |
@@ -516,6 +534,8 @@ npx next dev -p 3001
 ## Atribusi
 
 Catat di sini sumber dan lisensi seluruh foto, ikon, dan font yang dipakai (mis. Unsplash/Pexels, lucide-react, Plus Jakarta Sans, Inter) sebelum repositori dipublikasikan.
+
+> **Gambar saat ini placeholder;** ganti dan catat sumber/lisensi. Semua file ada di `public/images/` dan path-nya terdaftar di `src/config/images.ts`; saat aset asli datang, cukup ganti file dan path di sana, lalu tambahkan sumber dan lisensinya di bagian ini.
 
 ## Lisensi
 

@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "title": "INVESTYUK · Peluang Investasi Kabupaten ABC",
+    "description": "Pusat informasi peluang investasi Kabupaten ABC dengan pencarian cerdas, rekomendasi, dan pengelompokan peluang."
+  },
+  "common": {
+    "officialSite": "Situs resmi",
+    "switchLanguage": "English",
+    "images": {
+      "logo": "Logo INVESTYUK",
+      "hero": "Lanskap pesisir dan perbukitan Kabupaten ABC",
+      "agrowisata": "Kebun hortikultura untuk pengembangan agrowisata",
+      "resortPantai": "Pantai dan pulau kecil untuk pembangunan resort",
+      "kawasanIndustri": "Gedung pabrik di kawasan industri terpadu",
+      "inquiryGedung": "Gedung kantor pemerintah Kabupaten ABC"
+    }
+  },
+  "home": {
+    "title": "Temukan Peluang Investasi di Kabupaten ABC",
+    "intro": "Pusat informasi investasi daerah dengan dukungan teknologi AI untuk membantu Anda menemukan peluang terbaik.",
+    "accent": "Bersama Membangun",
+    "primaryAction": "Cari peluang",
+    "secondaryAction": "Ajukan inquiry",
+    "card": {
+      "title": "Sektor Unggulan",
+      "body": "Kenali potensi tiap sektor unggulan di Kabupaten ABC."
+    }
+  }
+}
