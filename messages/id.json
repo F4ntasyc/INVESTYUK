@@ -5,7 +5,6 @@
   },
   "common": {
     "officialSite": "Situs resmi",
-    "switchLanguage": "English",
     "images": {
       "logo": "Logo INVESTYUK",
       "hero": "Lanskap pesisir dan perbukitan Kabupaten ABC",
@@ -24,15 +23,210 @@
       }
     }
   },
+  "nav": {
+    "skip": "Lewati ke konten utama",
+    "mainLabel": "Navigasi utama",
+    "logoLabel": "INVESTYUK, kembali ke Beranda",
+    "home": "Beranda",
+    "potensi": "Potensi Daerah",
+    "potensiProfil": "Profil",
+    "sektor": "Sektor Unggulan",
+    "lokasi": "Lokasi & Proyek",
+    "peluang": "Peluang Investasi",
+    "panduan": "Panduan Investasi",
+    "prosedur": "Prosedur & Persyaratan",
+    "edukasi": "Edukasi",
+    "faq": "FAQ",
+    "tentang": "Tentang Kami",
+    "search": "Cari peluang investasi",
+    "track": "Lacak Inquiry",
+    "login": "Masuk",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu",
+    "menuTitle": "Menu",
+    "language": "Bahasa",
+    "langId": "Bahasa Indonesia",
+    "langEn": "English"
+  },
+  "footer": {
+    "government": "Pemerintah Kabupaten ABC",
+    "agency": "Dinas Komunikasi dan Informatika",
+    "about": "INVESTYUK memusatkan informasi sektor unggulan, peluang investasi, dan prosedur di Kabupaten ABC, serta menjadi jalur komunikasi antara calon investor dan pemerintah daerah.",
+    "academic": "Proyek akademik — Kabupaten ABC dan seluruh data di situs ini fiktif.",
+    "explore": "Jelajahi",
+    "guide": "Panduan",
+    "legal": "Legal",
+    "contact": "Kontak",
+    "sektor": "Sektor Unggulan",
+    "peluang": "Peluang Investasi",
+    "rekomendasi": "Rekomendasi",
+    "peta": "Peta Lokasi",
+    "prosedur": "Prosedur & Persyaratan",
+    "edukasi": "Edukasi",
+    "faq": "FAQ",
+    "lacak": "Lacak Inquiry",
+    "privasi": "Kebijakan Privasi",
+    "syarat": "Syarat Penggunaan",
+    "tentang": "Tentang Kami",
+    "address": "Jl. Merdeka No. 1, Kota Harapan, Kabupaten ABC",
+    "email": "info@investyuk.test",
+    "phone": "0812-0000-0100",
+    "emailLabel": "Email",
+    "phoneLabel": "Telepon",
+    "addressLabel": "Alamat",
+    "disclaimer": "Nilai investasi, ROI, dan balik modal adalah estimasi, bukan nasihat keuangan.",
+    "copyright": "© {year} INVESTYUK · Pemerintah Kabupaten ABC"
+  },
   "home": {
-    "title": "Temukan Peluang Investasi di Kabupaten ABC",
-    "intro": "Pusat informasi investasi daerah dengan dukungan teknologi AI untuk membantu Anda menemukan peluang terbaik.",
-    "accent": "Bersama Membangun",
-    "primaryAction": "Cari peluang",
-    "secondaryAction": "Ajukan inquiry",
+    "hero": {
+      "eyebrow": "Selamat datang di INVESTYUK",
+      "titleLine1": "Temukan Peluang Investasi",
+      "titleLine2": "di",
+      "titleHighlight": "Kabupaten ABC",
+      "subtitle": "Pusat informasi investasi daerah dengan dukungan teknologi AI untuk membantu Anda menemukan peluang terbaik.",
+      "searchLabel": "Cari peluang investasi",
+      "searchPlaceholder": "Cari peluang investasi, sektor, lokasi, atau kata kunci…",
+      "searchButton": "Cari",
+      "examplesLabel": "Contoh pencarian:",
+      "example1": "Lahan perikanan di bawah 500 juta",
+      "example2": "Pabrik pengolahan hasil pertanian",
+      "example3": "Investasi pariwisata di pantai",
+      "example4": "Kawasan industri",
+      "aiBadgeTitle": "Didukung AI",
+      "aiBadgeItems": "Pencarian cerdas · Rekomendasi · Pengelompokan data"
+    },
+    "stats": {
+      "title": "Ringkasan data investasi",
+      "opportunities": {
+        "label": "Peluang Investasi",
+        "desc": "Proyek yang terbuka untuk investor"
+      },
+      "sectors": {
+        "label": "Sektor Unggulan",
+        "desc": "Pertanian, pariwisata, industri, dan lainnya"
+      },
+      "districts": {
+        "label": "Kecamatan",
+        "desc": "Lokasi tersebar di seluruh kabupaten"
+      },
+      "inquiries": {
+        "label": "Inquiry Masuk",
+        "desc": "Pertanyaan dari calon investor"
+      }
+    },
+    "quick": {
+      "title": "Akses Cepat ke Informasi Investasi",
+      "subtitle": "Temukan semua yang Anda butuhkan dalam satu platform.",
+      "sektor": {
+        "title": "Sektor Unggulan",
+        "desc": "Kenali potensi tiap sektor unggulan di Kabupaten ABC."
+      },
+      "peluang": {
+        "title": "Peluang Investasi",
+        "desc": "Jelajahi proyek dan peluang investasi yang tersedia."
+      },
+      "lokasi": {
+        "title": "Lokasi & Proyek",
+        "desc": "Lihat lokasi strategis dan detail proyek investasi."
+      },
+      "prosedur": {
+        "title": "Prosedur & Persyaratan",
+        "desc": "Pahami langkah, dokumen, dan persyaratan investasi."
+      },
+      "inquiry": {
+        "title": "Inquiry & Tracking",
+        "desc": "Ajukan pertanyaan dan pantau tindak lanjutnya."
+      },
+      "edukasi": {
+        "title": "Edukasi & Informasi",
+        "desc": "Baca artikel dan panduan investasi daerah."
+      }
+    },
+    "recommend": {
+      "title": "Rekomendasi untuk Anda",
+      "subtitle": "Pilih sektor, kecamatan, atau kisaran modal. Kami tampilkan peluang yang paling sesuai beserta alasannya.",
+      "sector": "Sektor",
+      "sectorAll": "Semua sektor",
+      "district": "Kecamatan",
+      "districtAll": "Semua kecamatan",
+      "budget": "Kisaran modal",
+      "budgetAll": "Semua kisaran",
+      "budgetSmall": "Di bawah Rp1 miliar",
+      "budgetMedium": "Rp1–25 miliar",
+      "budgetLarge": "Di atas Rp25 miliar",
+      "submit": "Tampilkan rekomendasi",
+      "pending": "Mencari rekomendasi…",
+      "hint": "Belum punya pilihan? Tekan Tampilkan rekomendasi untuk melihat peluang unggulan.",
+      "results": "{count, plural, other {# peluang yang cocok untuk Anda}}",
+      "emptyTitle": "Belum ada peluang yang cocok dengan semua pilihan Anda",
+      "emptyBody": "Coba kosongkan pilihan kecamatan atau ubah kisaran modal. Kecamatan lain sering punya peluang di sektor yang sama.",
+      "reasonMatch": "Sesuai {criteria} Anda",
+      "criteriaSector": "sektor",
+      "criteriaDistrict": "kecamatan",
+      "criteriaBudget": "kisaran modal",
+      "reasonFeatured": "Termasuk peluang unggulan saat ini",
+      "reasonOpen": "Peluang yang sedang terbuka untuk investor",
+      "error": "Rekomendasi belum bisa ditampilkan. Silakan coba lagi."
+    },
+    "featured": {
+      "title": "Peluang Unggulan",
+      "subtitle": "Proyek investasi pilihan dengan potensi besar untuk masa depan.",
+      "seeAll": "Lihat semua peluang",
+      "note": "Nilai bersifat estimasi, bukan nasihat keuangan."
+    },
+    "inquiryCta": {
+      "title": "Ingin Tahu Lebih Lanjut?",
+      "body": "Tim kami siap membantu Anda mendapatkan informasi lebih rinci atau berkonsultasi tentang investasi.",
+      "button": "Ajukan Inquiry",
+      "accentLine1": "Bersama Membangun",
+      "accentLine2": "Masa Depan Kabupaten ABC"
+    }
+  },
+  "peluang": {
+    "title": "Peluang Investasi",
+    "intro": "Jelajahi peluang investasi yang terbuka di Kabupaten ABC. Cari berdasarkan judul atau ringkasan proyek.",
+    "searchLabel": "Cari peluang investasi",
+    "searchPlaceholder": "Contoh: perikanan, resort, kopi",
+    "searchButton": "Cari",
+    "count": "{count, plural, other {# peluang}}",
+    "countFor": "{count, plural, other {# peluang}} untuk “{q}”",
+    "emptyTitle": "Belum ada peluang yang cocok dengan “{q}”",
+    "emptyBody": "Coba kata yang lebih umum, misalnya nama sektor seperti perikanan atau pariwisata, atau periksa ejaannya.",
+    "showAll": "Tampilkan semua peluang",
+    "note": "Nilai investasi bersifat estimasi, bukan nasihat keuangan.",
     "card": {
-      "title": "Sektor Unggulan",
-      "body": "Kenali potensi tiap sektor unggulan di Kabupaten ABC."
+      "detail": "Lihat detail {title}",
+      "compare": "Bandingkan",
+      "compareOn": "Dibandingkan",
+      "compareAdded": "Ditambahkan ke perbandingan ({count}/3)",
+      "compareRemoved": "Dihapus dari perbandingan",
+      "compareFull": "Sudah ada 3 peluang. Hapus salah satu dulu.",
+      "compareError": "Perbandingan tidak bisa disimpan di browser ini.",
+      "value": "Nilai investasi",
+      "cluster": "Kelompok {name}"
+    }
+  },
+  "comingSoon": {
+    "body": "Halaman ini sedang kami siapkan. Sementara itu, Anda dapat menjelajahi peluang investasi yang sudah tersedia.",
+    "back": "Kembali ke Beranda",
+    "browse": "Lihat peluang investasi",
+    "pages": {
+      "potensi": "Profil Potensi Daerah",
+      "sektor": "Sektor Unggulan",
+      "peluangDetail": "Detail Peluang",
+      "bandingkan": "Bandingkan Peluang",
+      "rekomendasi": "Rekomendasi Peluang",
+      "prosedur": "Prosedur & Persyaratan",
+      "edukasi": "Edukasi Investasi",
+      "faq": "Pertanyaan Umum",
+      "inquiry": "Ajukan Inquiry",
+      "lacak": "Lacak Inquiry",
+      "tentang": "Tentang Kami",
+      "kebijakanPrivasi": "Kebijakan Privasi",
+      "syarat": "Syarat Penggunaan",
+      "masuk": "Masuk",
+      "daftar": "Daftar Akun",
+      "lupaPassword": "Lupa Password"
     }
   }
 }

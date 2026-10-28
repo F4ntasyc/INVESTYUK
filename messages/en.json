@@ -5,7 +5,6 @@
   },
   "common": {
     "officialSite": "Official site",
-    "switchLanguage": "Bahasa Indonesia",
     "images": {
       "logo": "INVESTYUK logo",
       "hero": "Coastline and hills of ABC Regency",
@@ -24,15 +23,210 @@
       }
     }
   },
+  "nav": {
+    "skip": "Skip to main content",
+    "mainLabel": "Main navigation",
+    "logoLabel": "INVESTYUK, back to Home",
+    "home": "Home",
+    "potensi": "Regional Potential",
+    "potensiProfil": "Profile",
+    "sektor": "Priority Sectors",
+    "lokasi": "Sites & Projects",
+    "peluang": "Opportunities",
+    "panduan": "Investor Guide",
+    "prosedur": "Procedures & Requirements",
+    "edukasi": "Education",
+    "faq": "FAQ",
+    "tentang": "About Us",
+    "search": "Search investment opportunities",
+    "track": "Track Inquiry",
+    "login": "Sign in",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuTitle": "Menu",
+    "language": "Language",
+    "langId": "Bahasa Indonesia",
+    "langEn": "English"
+  },
+  "footer": {
+    "government": "ABC Regency Government",
+    "agency": "Communication and Informatics Office",
+    "about": "INVESTYUK brings together information on priority sectors, investment opportunities and procedures in ABC Regency, and connects prospective investors with the regional government.",
+    "academic": "Academic project — ABC Regency and all data on this site are fictional.",
+    "explore": "Explore",
+    "guide": "Guide",
+    "legal": "Legal",
+    "contact": "Contact",
+    "sektor": "Priority Sectors",
+    "peluang": "Opportunities",
+    "rekomendasi": "Recommendations",
+    "peta": "Location Map",
+    "prosedur": "Procedures & Requirements",
+    "edukasi": "Education",
+    "faq": "FAQ",
+    "lacak": "Track Inquiry",
+    "privasi": "Privacy Policy",
+    "syarat": "Terms of Use",
+    "tentang": "About Us",
+    "address": "Jl. Merdeka No. 1, Kota Harapan, ABC Regency",
+    "email": "info@investyuk.test",
+    "phone": "0812-0000-0100",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "addressLabel": "Address",
+    "disclaimer": "Investment values, ROI and payback periods are estimates, not financial advice.",
+    "copyright": "© {year} INVESTYUK · ABC Regency Government"
+  },
   "home": {
-    "title": "Discover Investment Opportunities in ABC Regency",
-    "intro": "A regional investment information hub, powered by AI to help you find the best opportunities.",
-    "accent": "Building Together",
-    "primaryAction": "Find opportunities",
-    "secondaryAction": "Send an inquiry",
+    "hero": {
+      "eyebrow": "Welcome to INVESTYUK",
+      "titleLine1": "Discover Investment Opportunities",
+      "titleLine2": "in",
+      "titleHighlight": "ABC Regency",
+      "subtitle": "The regional investment information hub, with AI to help you find the opportunities that suit you best.",
+      "searchLabel": "Search investment opportunities",
+      "searchPlaceholder": "Search opportunities, sectors, locations or keywords…",
+      "searchButton": "Search",
+      "examplesLabel": "Try searching:",
+      "example1": "Fisheries land under 500 million",
+      "example2": "Farm produce processing plant",
+      "example3": "Beach tourism investment",
+      "example4": "Industrial estate",
+      "aiBadgeTitle": "Powered by AI",
+      "aiBadgeItems": "Smart search · Recommendations · Data clustering"
+    },
+    "stats": {
+      "title": "Investment data at a glance",
+      "opportunities": {
+        "label": "Investment Opportunities",
+        "desc": "Projects open to investors"
+      },
+      "sectors": {
+        "label": "Priority Sectors",
+        "desc": "Agriculture, tourism, industry and more"
+      },
+      "districts": {
+        "label": "Districts",
+        "desc": "Sites spread across the regency"
+      },
+      "inquiries": {
+        "label": "Inquiries Received",
+        "desc": "Questions from prospective investors"
+      }
+    },
+    "quick": {
+      "title": "Quick Access to Investment Information",
+      "subtitle": "Everything you need, in one place.",
+      "sektor": {
+        "title": "Priority Sectors",
+        "desc": "Get to know the potential of each priority sector in ABC Regency."
+      },
+      "peluang": {
+        "title": "Investment Opportunities",
+        "desc": "Browse the projects and opportunities on offer."
+      },
+      "lokasi": {
+        "title": "Sites & Projects",
+        "desc": "See strategic sites and project details."
+      },
+      "prosedur": {
+        "title": "Procedures & Requirements",
+        "desc": "Understand the steps, documents and requirements."
+      },
+      "inquiry": {
+        "title": "Inquiry & Tracking",
+        "desc": "Ask a question and follow up on the response."
+      },
+      "edukasi": {
+        "title": "Education & Insights",
+        "desc": "Read articles and guides on regional investment."
+      }
+    },
+    "recommend": {
+      "title": "Recommended for You",
+      "subtitle": "Choose a sector, district or budget. We will show the best-matching opportunities and explain why.",
+      "sector": "Sector",
+      "sectorAll": "All sectors",
+      "district": "District",
+      "districtAll": "All districts",
+      "budget": "Budget",
+      "budgetAll": "Any budget",
+      "budgetSmall": "Under IDR 1 billion",
+      "budgetMedium": "IDR 1–25 billion",
+      "budgetLarge": "Over IDR 25 billion",
+      "submit": "Show recommendations",
+      "pending": "Finding recommendations…",
+      "hint": "No preferences yet? Press Show recommendations to see featured opportunities.",
+      "results": "{count, plural, one {# opportunity that suits you} other {# opportunities that suit you}}",
+      "emptyTitle": "Nothing matches all of your choices yet",
+      "emptyBody": "Try clearing the district or changing the budget. Other districts often have opportunities in the same sector.",
+      "reasonMatch": "Matches your {criteria}",
+      "criteriaSector": "sector",
+      "criteriaDistrict": "district",
+      "criteriaBudget": "budget",
+      "reasonFeatured": "One of our current featured opportunities",
+      "reasonOpen": "Currently open to investors",
+      "error": "We couldn’t load recommendations. Please try again."
+    },
+    "featured": {
+      "title": "Featured Opportunities",
+      "subtitle": "Selected projects with strong long-term potential.",
+      "seeAll": "See all opportunities",
+      "note": "Values are estimates, not financial advice."
+    },
+    "inquiryCta": {
+      "title": "Want to Know More?",
+      "body": "Our team is ready to give you more detailed information or talk through your investment plans.",
+      "button": "Send an Inquiry",
+      "accentLine1": "Building Together",
+      "accentLine2": "the Future of ABC Regency"
+    }
+  },
+  "peluang": {
+    "title": "Investment Opportunities",
+    "intro": "Browse the investment opportunities open in ABC Regency. Search by project title or summary.",
+    "searchLabel": "Search investment opportunities",
+    "searchPlaceholder": "For example: fisheries, resort, coffee",
+    "searchButton": "Search",
+    "count": "{count, plural, one {# opportunity} other {# opportunities}}",
+    "countFor": "{count, plural, one {# opportunity} other {# opportunities}} for “{q}”",
+    "emptyTitle": "No opportunities match “{q}” yet",
+    "emptyBody": "Try a broader word, such as a sector name like fisheries or tourism, or check the spelling.",
+    "showAll": "Show all opportunities",
+    "note": "Investment values are estimates, not financial advice.",
     "card": {
-      "title": "Priority Sectors",
-      "body": "Explore the potential of each priority sector in ABC Regency."
+      "detail": "View details for {title}",
+      "compare": "Compare",
+      "compareOn": "Comparing",
+      "compareAdded": "Added to comparison ({count}/3)",
+      "compareRemoved": "Removed from comparison",
+      "compareFull": "You already have 3. Remove one first.",
+      "compareError": "Comparison can’t be saved in this browser.",
+      "value": "Investment value",
+      "cluster": "Group {name}"
+    }
+  },
+  "comingSoon": {
+    "body": "We are still preparing this page. In the meantime, you can browse the investment opportunities that are already available.",
+    "back": "Back to Home",
+    "browse": "Browse opportunities",
+    "pages": {
+      "potensi": "Regional Profile",
+      "sektor": "Priority Sectors",
+      "peluangDetail": "Opportunity Details",
+      "bandingkan": "Compare Opportunities",
+      "rekomendasi": "Recommended Opportunities",
+      "prosedur": "Procedures & Requirements",
+      "edukasi": "Investor Education",
+      "faq": "Frequently Asked Questions",
+      "inquiry": "Send an Inquiry",
+      "lacak": "Track an Inquiry",
+      "tentang": "About Us",
+      "kebijakanPrivasi": "Privacy Policy",
+      "syarat": "Terms of Use",
+      "masuk": "Sign In",
+      "daftar": "Create an Account",
+      "lupaPassword": "Forgot Password"
     }
   }
 }

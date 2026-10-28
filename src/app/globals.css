@@ -42,6 +42,8 @@
   --icon-pink: #be185d;
   --tint-teal: #ccfbf1;
   --icon-teal: #0f766e;
+  --tint-indigo: #e0e7ff;
+  --icon-indigo: #4338ca; /* 6.4:1 di tint-indigo */
 
   /* --- Bentuk & elevasi ------------------------------------------- */
   --radius: 0.75rem; /* basis shadcn; rounded-xl = 16px (kartu) */
@@ -98,6 +100,8 @@
   --color-icon-pink: var(--icon-pink);
   --color-tint-teal: var(--tint-teal);
   --color-icon-teal: var(--icon-teal);
+  --color-tint-indigo: var(--tint-indigo);
+  --color-icon-indigo: var(--icon-indigo);
 
   /* warna semantik shadcn */
   --color-background: var(--background);

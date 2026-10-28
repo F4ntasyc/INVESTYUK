@@ -10,7 +10,7 @@
 
 > **Proyek akademik.** INVESTYUK adalah tugas besar mata kuliah Manajemen Proyek (S1 Informatika) berdasarkan Kerangka Acuan Kerja (KAK) simulasi. **Kabupaten ABC bersifat fiktif**; seluruh angka investasi, lokasi, dan konten adalah data contoh.
 
-> **Status:** fondasi (Next.js, Prisma, Docker Compose, dua bahasa, token desain), skema database + migrasi awal, dan seed data fiktif sudah ada. Halaman aplikasi, autentikasi, dan fitur AI belum dibuat. Lihat [Roadmap](#roadmap).
+> **Status:** fondasi (Next.js, Prisma, Docker Compose, dua bahasa, token desain), skema database + migrasi awal, dan seed data fiktif, layout publik, Beranda, dan daftar peluang sudah ada. Halaman lain masih "Segera hadir"; autentikasi dan fitur AI belum dibuat. Lihat [Roadmap](#roadmap).
 
 ---
 
@@ -512,7 +512,7 @@ INVESTYUK/
 │  ├─ INVESTYUK_ERD.md
 │  └─ UI/beranda.png           # mockup Beranda
 ├─ messages/
-│  ├─ id.json                  # terjemahan ID (namespace: common, metadata, home)
+│  ├─ id.json                  # terjemahan ID (namespace: metadata, common, nav, footer, home, peluang, comingSoon)
 │  └─ en.json                  # terjemahan EN
 ├─ prisma/
 │  ├─ schema.prisma            # 20 model, 5 enum
@@ -526,10 +526,18 @@ INVESTYUK/
 │  └─ images/                  # logo, hero, peluang/, sektor/, inquiry-gedung (placeholder SVG)
 ├─ src/
 │  ├─ app/
-│  │  ├─ [locale]/             # layout.tsx (font, <html lang>), page.tsx (halaman uji fondasi)
+│  │  ├─ [locale]/
+│  │  │  ├─ layout.tsx         # font, <html lang>, skip link, navbar + footer
+│  │  │  ├─ page.tsx           # Beranda (dirender saat request; membaca database)
+│  │  │  ├─ peluang/           # daftar peluang + pencarian ?q= ; peluang/[slug] = "Segera hadir"
+│  │  │  └─ potensi/, sektor/, prosedur/, edukasi/, faq/, inquiry/, lacak/, tentang/, ...
+│  │  │                        # rute publik lain: halaman "Segera hadir" (komponen ComingSoon)
 │  │  ├─ globals.css           # token desain (Tailwind 4 @theme + variabel shadcn)
 │  │  └─ favicon.ico
-│  ├─ components/ui/           # komponen shadcn/ui (button, card, input, badge, select, ...)
+│  ├─ components/
+│  │  ├─ ui/                   # komponen shadcn/ui (button, card, input, badge, select, ...)
+│  │  ├─ site/                 # navbar, footer, OpportunityCard, CompareButton, ComingSoon
+│  │  └─ home/                 # section Beranda: hero, statistik, akses cepat, rekomendasi, unggulan
 │  ├─ config/
 │  │  └─ images.ts             # daftar semua path gambar + key alt text
 │  ├─ generated/prisma/        # Prisma Client (dibuat otomatis, tidak di-commit)
@@ -538,7 +546,11 @@ INVESTYUK/
 │  │  ├─ request.ts            # memuat messages per locale
 │  │  └─ navigation.ts         # Link, redirect, usePathname, useRouter sadar bahasa
 │  ├─ lib/
-│  │  └─ prisma.ts             # PrismaClient singleton + adapter MariaDB
+│  │  ├─ prisma.ts             # PrismaClient singleton + adapter MariaDB
+│  │  ├─ data/                 # query halaman publik (hanya PUBLISHED, BigInt sudah diformat)
+│  │  ├─ actions/              # Server Action (rekomendasi sementara)
+│  │  ├─ format.ts             # format Rupiah, angka, daftar sesuai bahasa
+│  │  └─ sector-colors.ts      # warna sektor -> kelas token tint/icon
 │  ├─ global.d.ts              # tipe key terjemahan next-intl
 │  └─ proxy.ts                 # routing bahasa (Next.js 16: pengganti middleware.ts)
 ├─ .dockerignore
@@ -558,9 +570,8 @@ Direncanakan:
 
 | Lokasi | Isi |
 |---|---|
-| `src/app/[locale]/` | Beranda dan halaman publik, auth, akun, dashboard (direncanakan) |
+| `src/app/[locale]/` | Isi halaman detail peluang, sektor, prosedur, FAQ, edukasi, auth, akun, dashboard (direncanakan) |
 | `src/app/api/` | search, recommend, inquiries, track (direncanakan) |
-| `src/components/` | Komponen situs: navbar, footer, kartu peluang (direncanakan) |
 | `src/lib/ai/` | parser, fuzzy, embedding, hybrid, recommend, kmeans (direncanakan) |
 | `tests/unit/`, `tests/e2e/`, `tests/ai-eval/` | Vitest, Playwright, evaluasi AI (direncanakan) |
 | `docs/screenshots/` | Tangkapan layar (direncanakan) |
@@ -651,10 +662,8 @@ netstat -ano | findstr :3000
 Hentikan proses itu, atau jalankan di port lain:
 
 ```powershell
-npx next dev -p 3001
+npm run dev -- -p 3001
 ```
-
-> Di PowerShell, `npm run dev -- -p 3001` kadang tidak meneruskan `--` ke npm; `npx next dev -p 3001` lebih aman.
 
 ### Warning "LF will be replaced by CRLF"
 
@@ -697,16 +706,22 @@ npx next dev -p 3001
 - [x] Next.js + Tailwind CSS
 - [x] Prisma
 - [x] Docker Compose (MySQL + Mailpit)
-- [ ] shadcn/ui
-- [ ] next-intl
-- [ ] Token desain
+- [x] shadcn/ui
+- [x] next-intl (ID default, EN di `/en`)
+- [x] Token desain
 
 **Fase 1, Data**
 - [x] Skema database + migrasi awal (20 tabel)
 - [x] Seed (40 peluang, dua bahasa; konten wajib diverifikasi tim)
 
+**Fase 2, Halaman publik inti** (sedang berjalan)
+- [x] Layout publik: navbar (dropdown, menu ponsel, ID | EN) dan footer
+- [x] Beranda: hero + pencarian, statistik dari database, akses cepat, rekomendasi sementara, peluang unggulan
+- [x] Daftar peluang `/peluang` dengan pencarian kata kunci sederhana
+- [x] Halaman "Segera hadir" untuk semua rute publik lain (tanpa 404)
+- [ ] Detail peluang, sektor, prosedur, FAQ, edukasi, tentang (isi sebenarnya)
+
 **Fase berikutnya**
-- [ ] **Fase 2, Halaman publik inti:** beranda, sektor, daftar dan detail peluang, prosedur, FAQ, edukasi
 - [ ] **Fase 3, Pencarian & AI dasar:** parser kueri, fuzzy, rekomendasi rule-based, K-Means
 - [ ] **Fase 4, Inquiry & autentikasi:** form, tracking, email, peran
 - [ ] **Fase 5, Dashboard:** KPI, CRUD, kelola inquiry, pengguna

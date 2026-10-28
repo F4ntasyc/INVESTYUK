@@ -3,7 +3,7 @@ import type { AgencyKey } from "./agencies";
 // `icon`  = nama komponen ikon lucide-react (mis. <Sprout />).
 // `color` = nama warna token di src/app/globals.css; UI memakai pasangan
 //           `bg-tint-<color>` (latar pastel) + `text-icon-<color>` (ikon).
-//           Pilihan yang ada: green, purple, blue, orange, pink, teal.
+//           Pilihan yang ada: green, purple, blue, orange, pink, teal, indigo.
 
 export type SectorSlug =
   | "pertanian"
@@ -21,7 +21,7 @@ export type SectorSeed = {
   descriptionId: string;
   descriptionEn: string;
   icon: string;
-  color: "green" | "purple" | "blue" | "orange" | "pink" | "teal";
+  color: "green" | "purple" | "blue" | "orange" | "pink" | "teal" | "indigo";
   sortOrder: number;
   agency: AgencyKey;
 };
@@ -88,7 +88,7 @@ export const sectors: SectorSeed[] = [
     descriptionEn:
       "Growing district centres need markets, distribution hubs and retail space to serve residents and visitors alike.",
     icon: "Store",
-    color: "orange",
+    color: "indigo",
     sortOrder: 5,
     agency: "perindag",
   },
