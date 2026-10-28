@@ -1,0 +1,421 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// ===================== ENUM =====================
+
+enum Role {
+  INVESTOR
+  DINAS
+  ADMIN
+}
+
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  REPLIED
+  DONE
+}
+
+enum InquiryEventType {
+  CREATED
+  STATUS_CHANGED
+  ASSIGNED
+  REPLIED
+  NOTE
+}
+
+enum DeletionStatus {
+  PENDING
+  DONE
+  REJECTED
+}
+
+// ============ PENGGUNA & AUTENTIKASI ============
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?
+  role          Role      @default(INVESTOR)
+  agencyId      Int?
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  agency        Agency?            @relation(fields: [agencyId], references: [id])
+  accounts      Account[]
+  inquiries     Inquiry[]
+  inquiryEvents InquiryEvent[]
+  saved         SavedOpportunity[]
+  articles      Article[]
+  auditLogs     AuditLog[]
+  clusterRuns   ClusterRun[]
+
+  @@index([agencyId])
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("accounts")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============ ORGANISASI & REFERENSI ============
+
+model Agency {
+  id     Int     @id @default(autoincrement())
+  nameId String
+  nameEn String
+  email  String?
+  phone  String?
+
+  users     User[]
+  sectors   Sector[]
+  inquiries Inquiry[]
+
+  @@map("agencies")
+}
+
+model Sector {
+  id            Int     @id @default(autoincrement())
+  slug          String  @unique
+  nameId        String
+  nameEn        String
+  descriptionId String  @db.Text
+  descriptionEn String  @db.Text
+  icon          String?
+  color         String?
+  sortOrder     Int     @default(0)
+  agencyId      Int
+
+  agency        Agency        @relation(fields: [agencyId], references: [id])
+  opportunities Opportunity[]
+
+  @@index([agencyId])
+  @@map("sectors")
+}
+
+model District {
+  id        Int     @id @default(autoincrement())
+  slug      String  @unique
+  name      String
+  latitude  Decimal @db.Decimal(9, 6)
+  longitude Decimal @db.Decimal(9, 6)
+
+  opportunities Opportunity[]
+
+  @@map("districts")
+}
+
+// ============ PELUANG INVESTASI ============
+
+model Opportunity {
+  id              Int           @id @default(autoincrement())
+  slug            String        @unique
+  titleId         String
+  titleEn         String
+  summaryId       String        @db.Text
+  summaryEn       String        @db.Text
+  descriptionId   String        @db.LongText
+  descriptionEn   String        @db.LongText
+  sectorId        Int
+  districtId      Int
+  address         String?
+  latitude        Decimal       @db.Decimal(9, 6)
+  longitude       Decimal       @db.Decimal(9, 6)
+
+  // fitur numerik (K-Means, rekomendasi, filter)
+  investmentValue BigInt        // Rupiah
+  estRoiPercent   Decimal       @db.Decimal(5, 2)
+  paybackYears    Decimal       @db.Decimal(4, 1)
+  landAreaHa      Decimal?      @db.Decimal(10, 2)
+  jobsEstimate    Int?
+
+  coverImageUrl   String?
+  featured        Boolean       @default(false)
+  status          PublishStatus @default(DRAFT)
+  publishedAt     DateTime?
+
+  // hasil Sistem Cerdas
+  clusterId       Int?
+  embedding       Json?
+  embeddingModel  String?
+  embeddingHash   String?
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  sector       Sector                   @relation(fields: [sectorId], references: [id])
+  district     District                 @relation(fields: [districtId], references: [id])
+  cluster      Cluster?                 @relation(fields: [clusterId], references: [id], onDelete: SetNull)
+  images       OpportunityImage[]
+  requirements OpportunityRequirement[]
+  inquiries    Inquiry[]
+  saved        SavedOpportunity[]
+
+  @@index([status, sectorId])
+  @@index([districtId])
+  @@index([clusterId])
+  @@index([featured, status])
+  @@map("opportunities")
+}
+
+model OpportunityImage {
+  id            Int     @id @default(autoincrement())
+  opportunityId Int
+  url           String
+  altId         String?
+  altEn         String?
+  sortOrder     Int     @default(0)
+
+  opportunity Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+
+  @@index([opportunityId])
+  @@map("opportunity_images")
+}
+
+model OpportunityRequirement {
+  id            Int    @id @default(autoincrement())
+  opportunityId Int
+  textId        String @db.Text
+  textEn        String @db.Text
+  sortOrder     Int    @default(0)
+
+  opportunity Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+
+  @@index([opportunityId])
+  @@map("opportunity_requirements")
+}
+
+// ============ SISTEM CERDAS (AI) ============
+
+model ClusterRun {
+  id            Int      @id @default(autoincrement())
+  k             Int
+  features      Json     // daftar fitur yang dipakai
+  normalization Json     // parameter min-max / log-transform
+  inertia       Decimal? @db.Decimal(14, 4)
+  silhouette    Decimal? @db.Decimal(6, 4)
+  isActive      Boolean  @default(false)
+  createdById   String?
+  createdAt     DateTime @default(now())
+
+  createdBy User?     @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  clusters  Cluster[]
+
+  @@index([isActive])
+  @@map("cluster_runs")
+}
+
+model Cluster {
+  id            Int     @id @default(autoincrement())
+  runId         Int
+  index         Int
+  labelId       String
+  labelEn       String
+  descriptionId String? @db.Text
+  descriptionEn String? @db.Text
+  centroid      Json
+  color         String?
+
+  run           ClusterRun    @relation(fields: [runId], references: [id], onDelete: Cascade)
+  opportunities Opportunity[]
+
+  @@unique([runId, index])
+  @@map("clusters")
+}
+
+model SearchLog {
+  id            Int      @id @default(autoincrement())
+  queryText     String   @db.VarChar(500)
+  parsedFilters Json?
+  resultCount   Int
+  method        String   @db.VarChar(20) // hybrid | fallback
+  locale        String   @default("id") @db.VarChar(5)
+  durationMs    Int?
+  createdAt     DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("search_logs")
+}
+
+// ============ KONTEN ============
+
+model ProcedureStep {
+  id        Int    @id @default(autoincrement())
+  stepOrder Int
+  titleId   String
+  titleEn   String
+  contentId String @db.Text
+  contentEn String @db.Text
+
+  @@map("procedure_steps")
+}
+
+model Faq {
+  id         Int    @id @default(autoincrement())
+  questionId String
+  questionEn String
+  answerId   String @db.Text
+  answerEn   String @db.Text
+  sortOrder  Int    @default(0)
+
+  @@map("faqs")
+}
+
+model Article {
+  id            Int           @id @default(autoincrement())
+  slug          String        @unique
+  titleId       String
+  titleEn       String
+  excerptId     String?       @db.Text
+  excerptEn     String?       @db.Text
+  contentId     String        @db.LongText
+  contentEn     String        @db.LongText
+  category      String?
+  coverImageUrl String?
+  status        PublishStatus @default(DRAFT)
+  authorId      String?
+  publishedAt   DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  author User? @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([status, publishedAt])
+  @@map("articles")
+}
+
+// ============ INQUIRY & KEPATUHAN ============
+
+model Inquiry {
+  id               Int           @id @default(autoincrement())
+  trackingCode     String        @unique
+  name             String
+  email            String
+  phone            String?
+  organization     String?
+  message          String        @db.Text
+  opportunityId    Int?
+  userId           String?
+  assignedAgencyId Int?
+  status           InquiryStatus @default(NEW)
+  locale           String        @default("id") @db.VarChar(5)
+  consentAt        DateTime
+  consentVersion   String
+  anonymizedAt     DateTime?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  closedAt         DateTime?
+
+  opportunity    Opportunity?   @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+  user           User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  assignedAgency Agency?        @relation(fields: [assignedAgencyId], references: [id], onDelete: SetNull)
+  events         InquiryEvent[]
+
+  @@index([email])
+  @@index([status, assignedAgencyId])
+  @@index([opportunityId])
+  @@index([userId])
+  @@map("inquiries")
+}
+
+model InquiryEvent {
+  id         Int              @id @default(autoincrement())
+  inquiryId  Int
+  type       InquiryEventType
+  fromStatus InquiryStatus?
+  toStatus   InquiryStatus?
+  message    String?          @db.Text
+  isPublic   Boolean          @default(true)
+  actorId    String?
+  createdAt  DateTime         @default(now())
+
+  inquiry Inquiry @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  actor   User?   @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([inquiryId, createdAt])
+  @@map("inquiry_events")
+}
+
+model SavedOpportunity {
+  userId        String
+  opportunityId Int
+  createdAt     DateTime @default(now())
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  opportunity Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+
+  @@id([userId, opportunityId])
+  @@map("saved_opportunities")
+}
+
+model AuditLog {
+  id         Int      @id @default(autoincrement())
+  actorId    String?
+  action     String
+  entityType String
+  entityId   String?
+  metadata   Json?
+  ipHash     String?
+  createdAt  DateTime @default(now())
+
+  actor User? @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([entityType, entityId])
+  @@index([actorId, createdAt])
+  @@map("audit_logs")
+}
+
+model DeletionRequest {
+  id           Int            @id @default(autoincrement())
+  email        String
+  trackingCode String?
+  status       DeletionStatus @default(PENDING)
+  requestedAt  DateTime       @default(now())
+  processedAt  DateTime?
+  processedBy  String?
+
+  @@index([status])
+  @@map("deletion_requests")
+}
